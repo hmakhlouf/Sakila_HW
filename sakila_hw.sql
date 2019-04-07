@@ -1,17 +1,25 @@
+/*###################################################
+ Hocine Makhlouf 
+ RICE UNIVERSITY DATA ANALYTICS BOOT CAMP 
+ Unit 10 Assignment - SQL
+*/###################################################
+
+
+
+
 USE sakila;
 ------------------------------------------------------
 
-
--- 1a. Display the first and last names of all actors from the table actor.
+-- 1a. 
 SELECT first_name, last_name FROM actor;
 
--- 1b. Display the first and last name of each actor in a single column in upper case letters. Name the column Actor Name.
+-- 1b. 
 SELECT UPPER(CONCAT(first_name,'  ',last_name)) AS 'Actor Name' FROM actor;
 
 -- 2a. 
 SELECT actor_id, first_name, Last_name From actor WHERE first_name = 'Joe';
 
--- 2b. Find all actors whose last name contain the letters GEN.
+-- 2b. 
 
 SELECT first_name, last_name FROM actor WHERE last_name LIKE '%GEN%';
 
@@ -27,8 +35,26 @@ ALTER TABLE actor ADD descreption BLOB;
 -- 3b 
 ALTER TABLE actor DROP COLUMN descreption;
 
+-- 4a. 
+SELECT last_name, COUNT(last_name) FROM actor GROUP BY last_name;
+
+-- 4b.
+SELECT last_name, COUNT(last_name) FROM actor  GROUP BY last_name HAVING COUNT(last_name)>= 2; 
+
+-- 4c. 
+UPDATE actor SET first_name = 'HARPO' WHERE last_name = 'WILLIAMS';
+
+-- 4d. 
+UPDATE actor SET first_name = 'GROUCHO' WHERE last_name='WILLIAMS';
+
+-- 5a.
 
 
+
+
+
+
+  
 
 
 
