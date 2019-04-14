@@ -50,6 +50,48 @@ UPDATE actor SET first_name = 'GROUCHO' WHERE last_name='WILLIAMS';
 -- 5a.
 
 
+-- 6a.
+SELECT staff.first_name, staff.last_name, address.address 
+FROM staff
+JOIN address 
+ON staff.address_id=address.address_id;
+
+
+-- 6b. Use JOIN to display the total amount rung up by each staff member in August of 2005. Use tables staff and payment.
+SELECT s.first_name, s.last_name ,p.payment_date, SUM(p.amount) as 'Total Amount'  
+FROM staff as s
+JOIN payment as p
+ON s.staff_id=p.staff_id
+WHERE month(p.payment_date)=8 and year(p.payment_date)=2005
+GROUP BY  first_name, last_name;
+
+
+-- 6c. List each film and the number of actors who are listed for that film. Use tables film_actor and film. Use inner join.
+SELECT f.title, count(a.film_id) as 'Number of Actors'
+FROM film f 
+INNER JOIN  film_actor a 
+ON f.film_id = a.film_id
+GROUP BY f.title; 
+
+-- 6d. How many copies of the film Hunchback Impossible exist in the inventory system?
+
+SELECT f.title, count(i.film_id) as 'Number of Copies'
+FROM film f 
+INNER JOIN inventory i 
+ON f.film_id = i.film_id
+GROUP BY f.title
+HAVING f.title = 'Hunchback Impossible';
+
+-- 6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name:
+SELECT c.first_name, c.last_name, SUM(p.amount) as 'Total Paid' 
+FROM customer c 
+INNER JOIN payment p
+ON p.customer_id = c.customer_id 
+GROUP BY c.first_name, c.last_name
+ORDER BY c.last_name ASC;
+
+
+
 
 
 
