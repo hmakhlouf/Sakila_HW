@@ -73,14 +73,15 @@ INNER JOIN  film_actor a
 ON f.film_id = a.film_id
 GROUP BY f.title; 
 
--- 6d. How many copies of the film Hunchback Impossible exist in the inventory system?
 
+-- 6d. How many copies of the film Hunchback Impossible exist in the inventory system?
 SELECT f.title, count(i.film_id) as 'Number of Copies'
 FROM film f 
 INNER JOIN inventory i 
 ON f.film_id = i.film_id
 GROUP BY f.title
 HAVING f.title = 'Hunchback Impossible';
+
 
 -- 6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name:
 SELECT c.first_name, c.last_name, SUM(p.amount) as 'Total Paid' 
@@ -90,17 +91,20 @@ ON p.customer_id = c.customer_id
 GROUP BY c.first_name, c.last_name
 ORDER BY c.last_name ASC;
 
+
 /*7a. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence, 
 films starting with the letters K and Q have also soared in popularity. Use subqueries to display the titles of movies starting with 
 the letters K and Q whose language is English.*/
 
+SELECT f.title
+FROM film f 
+INNER JOIN language l 
+ON f.language_id = l.language_id
+WHERE name = 'English'
+HAVING f.title LIKE 'K%' OR f.title LIKE 'Q%'; 
 
 
-
-
-
-
-  
+-- 7b. Use subqueries to display all actors who appear in the film Alone Trip.
 
 
 
