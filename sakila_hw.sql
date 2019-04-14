@@ -2,7 +2,7 @@
  Hocine Makhlouf 
  RICE UNIVERSITY DATA ANALYTICS BOOT CAMP 
  Unit 10 Assignment - SQL
-*/###################################################
+###################################################*/
 
 
 
@@ -89,6 +89,10 @@ INNER JOIN payment p
 ON p.customer_id = c.customer_id 
 GROUP BY c.first_name, c.last_name
 ORDER BY c.last_name ASC;
+
+/*7a. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence, 
+films starting with the letters K and Q have also soared in popularity. Use subqueries to display the titles of movies starting with 
+the letters K and Q whose language is English.*/
 
 
 
